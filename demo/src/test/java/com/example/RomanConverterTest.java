@@ -178,4 +178,10 @@ public class RomanConverterTest {
         String result = romanConverter.integerToRoman(5);
         assertEquals("V", result);
     }
+
+    @Test
+    public void testConverterIntegerToRomanAddition() {
+        String result = romanConverter.integerToRoman(6);
+        assertEquals("VI", result);
+    }
 }
