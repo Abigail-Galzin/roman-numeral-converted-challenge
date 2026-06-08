@@ -36,4 +36,8 @@ public class RomanConverter {
         }
         return integerValue;
     }
+
+    public String integerToRoman(int value) {
+        return "";
+    }
 }

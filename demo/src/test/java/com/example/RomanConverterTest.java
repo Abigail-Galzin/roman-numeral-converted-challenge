@@ -154,4 +154,10 @@ public class RomanConverterTest {
         int result = romanConverter.romanToInteger("MCMXLIV");
         assertEquals(1944, result);
     }
+
+    @Test
+    public void testConverterIntegerToRoman() {
+        String result = romanConverter.integerToRoman(1);
+        assertEquals("I", result);
+    }
 }
