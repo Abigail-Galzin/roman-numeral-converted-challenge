@@ -118,4 +118,40 @@ public class ConverterTest {
         int resultado = converter.romanToInteger("IX");
         assertEquals(9, resultado);
     }
+
+    @Test
+    public void testConverterSubstractL() {
+        int resultado = converter.romanToInteger("XL");
+        assertEquals(40, resultado);
+    }
+
+    @Test
+    public void testConverterSubstractXC() {
+        int resultado = converter.romanToInteger("XC");
+        assertEquals(90, resultado);
+    }
+
+    @Test
+    public void testConverterSubstract99() {
+        int resultado = converter.romanToInteger("XCIX");
+        assertEquals(99, resultado);
+    }
+
+    @Test
+    public void testConverterSubstractBigNumber() {
+        int resultado = converter.romanToInteger("MCCXXXIV");
+        assertEquals(1234, resultado);
+    }
+
+    @Test
+    public void testConverterSubstractBigNumber2() {
+        int resultado = converter.romanToInteger("CMXCIX");
+        assertEquals(999, resultado);
+    }
+
+    @Test
+    public void testConverterSubstractBigNumber3() {
+        int resultado = converter.romanToInteger("MCMXLIV");
+        assertEquals(1944, resultado);
+    }
 }
