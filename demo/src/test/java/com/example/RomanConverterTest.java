@@ -11,6 +11,7 @@ public class RomanConverterTest {
     public void setUp() {
         this.romanConverter = new RomanConverter();
     }
+
     @Test
     public void testConverter() {
         int result = romanConverter.romanToInteger("I");
@@ -183,5 +184,17 @@ public class RomanConverterTest {
     public void testConverterIntegerToRomanAddition() {
         String result = romanConverter.integerToRoman(6);
         assertEquals("VI", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanAddition7() {
+        String result = romanConverter.integerToRoman(8);
+        assertEquals("VIII", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanAdditionX() {
+        String result = romanConverter.integerToRoman(13);
+        assertEquals("XIII", result);
     }
 }

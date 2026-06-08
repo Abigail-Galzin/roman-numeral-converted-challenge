@@ -39,11 +39,17 @@ public class RomanConverter {
 
     public String integerToRoman(int value) {
         String integerToRoman = "";
-        for (int i = 0; i < value; i++) {
-            if (value == 5) {
+
+        while(value > 0) {
+            if(value >= 10) {
+                integerToRoman = "X";
+                value -= 10;
+            } else if (value >= 5) {
                 integerToRoman = "V";
+                value -= 5;
             } else {
                 integerToRoman += "I";
+                value -= 1;
             }
         }
         return integerToRoman;
