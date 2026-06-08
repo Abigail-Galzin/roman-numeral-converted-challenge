@@ -3,10 +3,10 @@ package com.example;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Converter {
+public class RomanConverter {
     Map<Character, Integer> romanMap;
 
-    public Converter() {
+    public RomanConverter() {
         this.romanMap = new HashMap<>();
         romanMap.put('I', 1);
         romanMap.put('V', 5);
