@@ -4,8 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Converter {
-    public int romanToInteger(String value) {
-        Map<Character, Integer> romanMap = new HashMap<>();
+    Map<Character, Integer> romanMap;
+
+    public Converter() {
+        this.romanMap = new HashMap<>();
         romanMap.put('I', 1);
         romanMap.put('V', 5);
         romanMap.put('X', 10);
@@ -13,8 +15,10 @@ public class Converter {
         romanMap.put('C', 100);
         romanMap.put('D', 500);
         romanMap.put('M', 1000);
+    }
 
-        int total = 0;
+    public int romanToInteger(String value) {
+        int integerValue = 0;
         for (int i = 0; i < value.length(); i++) {
             char currentLetter = value.charAt(i);
             int currentValue = romanMap.get(currentLetter);
@@ -22,14 +26,14 @@ public class Converter {
             if (i + 1 < value.length()) {
                 char nextLetter = value.charAt(i + 1);
                 if (currentValue < romanMap.get(nextLetter)) {
-                    total -= currentValue;
+                    integerValue -= currentValue;
                 } else {
-                    total += currentValue;
+                    integerValue += currentValue;
                 }
             } else {
-                total += currentValue;
+                integerValue += currentValue;
             }
         }
-        return total;
+        return integerValue;
     }
 }
