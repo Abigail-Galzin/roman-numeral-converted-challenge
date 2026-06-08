@@ -160,4 +160,22 @@ public class RomanConverterTest {
         String result = romanConverter.integerToRoman(1);
         assertEquals("I", result);
     }
+
+    @Test
+    public void testConverterIntegerToRoman2() {
+        String result = romanConverter.integerToRoman(2);
+        assertEquals("II", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRoman3() {
+        String result = romanConverter.integerToRoman(3);
+        assertEquals("III", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRoman5() {
+        String result = romanConverter.integerToRoman(5);
+        assertEquals("V", result);
+    }
 }
