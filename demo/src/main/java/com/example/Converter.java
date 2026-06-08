@@ -11,6 +11,7 @@ public class Converter {
         romanMap.put("III", 3);
         romanMap.put("V", 5);
         romanMap.put("X", 10);
+        romanMap.put("L", 50);
 
         if(value.length() >= 2) {
             int total = 0;
@@ -23,6 +24,9 @@ public class Converter {
                 }
                 if(value.charAt(i) == 'X') {
                     total += 10;
+                }
+                if(value.charAt(i) == 'L') {
+                    total += 50;
                 }
             }
             return total;
