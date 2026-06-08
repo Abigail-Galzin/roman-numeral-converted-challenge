@@ -40,4 +40,28 @@ public class ConverterTest {
         int resultado = converter.romanToInteger("VI");
         assertEquals(6, resultado);
     }
+
+    @Test
+    public void testConverter10() {
+        int resultado = converter.romanToInteger("X");
+        assertEquals(10, resultado);
+    }
+
+    @Test
+    public void testConverter12() {
+        int resultado = converter.romanToInteger("XIII");
+        assertEquals(13, resultado);
+    }
+
+    @Test
+    public void testConverter50() {
+        int resultado = converter.romanToInteger("L");
+        assertEquals(50, resultado);
+    }
+
+    @Test
+    public void testConverter55() {
+        int resultado = converter.romanToInteger("LV");
+        assertEquals(55, resultado);
+    }
 }
