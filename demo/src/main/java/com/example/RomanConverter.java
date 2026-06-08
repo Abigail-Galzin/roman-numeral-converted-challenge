@@ -1,6 +1,9 @@
 package com.example;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class RomanConverter {
@@ -39,17 +42,16 @@ public class RomanConverter {
 
     public String integerToRoman(int value) {
         String integerToRoman = "";
+        int[] values = {10, 9, 5, 4, 1};
+        String[] symbols = {"X", "IX", "V", "IV", "I"};
+        int index = 0;
 
         while(value > 0) {
-            if(value >= 10) {
-                integerToRoman = "X";
-                value -= 10;
-            } else if (value >= 5) {
-                integerToRoman = "V";
-                value -= 5;
+            if (value >= values[index]) {
+                integerToRoman += symbols[index];
+                value -= values[index];
             } else {
-                integerToRoman += "I";
-                value -= 1;
+                index++;
             }
         }
         return integerToRoman;
