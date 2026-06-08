@@ -5,33 +5,21 @@ import java.util.Map;
 
 public class Converter {
     public int romanToInteger(String value) {
-        Map<String, Integer> romanMap = new HashMap<>();
-        romanMap.put("I", 1);
-        romanMap.put("II", 2);
-        romanMap.put("III", 3);
-        romanMap.put("V", 5);
-        romanMap.put("X", 10);
-        romanMap.put("L", 50);
+        Map<Character, Integer> romanMap = new HashMap<>();
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
 
         if(value.length() >= 2) {
             int total = 0;
             for (int i = 0; i < value.length(); i++) {
-                if(value.charAt(i) == 'I') {
-                    total += 1;
-                }
-                if(value.charAt(i) == 'V') {
-                    total += 5;
-                }
-                if(value.charAt(i) == 'X') {
-                    total += 10;
-                }
-                if(value.charAt(i) == 'L') {
-                    total += 50;
-                }
+                char currentLetter = value.charAt(i);
+                total += romanMap.get(currentLetter);
             }
             return total;
         } else {
-            return romanMap.get(value);
+            return romanMap.get(value.charAt(0));
         }
     }
 }
