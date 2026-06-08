@@ -18,7 +18,18 @@ public class Converter {
             int total = 0;
             for (int i = 0; i < value.length(); i++) {
                 char currentLetter = value.charAt(i);
-                total += romanMap.get(currentLetter);
+                if(i+1 < value.length()) {
+                    char nextLetter = value.charAt(i+1);
+                    int currentValue = romanMap.get(currentLetter);
+
+                    if (currentValue < romanMap.get(nextLetter)) {
+                        total -= currentValue;
+                    } else {
+                        total += currentValue;
+                    }
+                } else {
+                    total += romanMap.get(currentLetter);
+                }
             }
             return total;
         } else {
