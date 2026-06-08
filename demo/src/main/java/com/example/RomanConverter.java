@@ -38,6 +38,6 @@ public class RomanConverter {
     }
 
     public String integerToRoman(int value) {
-        return "";
+        return "I";
     }
 }
