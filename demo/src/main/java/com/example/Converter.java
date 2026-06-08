@@ -11,6 +11,19 @@ public class Converter {
         romanMap.put("III", 3);
         romanMap.put("V", 5);
 
-        return romanMap.get(value);
+        if(value.length() >= 2) {
+            int total = 0;
+            for (int i = 0; i < value.length(); i++) {
+                if(value.charAt(i) == 'I') {
+                    total += 1;
+                }
+                if(value.charAt(i) == 'V') {
+                    total += 5;
+                }
+            }
+            return total;
+        } else {
+            return romanMap.get(value);
+        }
     }
 }
