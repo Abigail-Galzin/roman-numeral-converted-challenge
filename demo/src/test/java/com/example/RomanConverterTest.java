@@ -1,16 +1,19 @@
 package com.example;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class RomanConverterTest {
     private RomanConverter romanConverter;
+
     @BeforeEach
     public void setUp() {
         this.romanConverter = new RomanConverter();
     }
+
     @Test
     public void testConverter() {
         int result = romanConverter.romanToInteger("I");
@@ -153,5 +156,147 @@ public class RomanConverterTest {
     public void testConverterSubstractBigNumber3() {
         int result = romanConverter.romanToInteger("MCMXLIV");
         assertEquals(1944, result);
+    }
+
+    @Test
+    public void testConverterIntegerToRoman() {
+        String result = romanConverter.integerToRoman(1);
+        assertEquals("I", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRoman2() {
+        String result = romanConverter.integerToRoman(2);
+        assertEquals("II", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRoman3() {
+        String result = romanConverter.integerToRoman(3);
+        assertEquals("III", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRoman5() {
+        String result = romanConverter.integerToRoman(5);
+        assertEquals("V", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanAddition() {
+        String result = romanConverter.integerToRoman(6);
+        assertEquals("VI", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanAddition7() {
+        String result = romanConverter.integerToRoman(8);
+        assertEquals("VIII", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanAdditionX() {
+        String result = romanConverter.integerToRoman(13);
+        assertEquals("XIII", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanL() {
+        String result = romanConverter.integerToRoman(50);
+        assertEquals("L", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanAdditionL() {
+        String result = romanConverter.integerToRoman(58);
+        assertEquals("LVIII", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanC() {
+        String result = romanConverter.integerToRoman(100);
+        assertEquals("C", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanAdditionC() {
+        String result = romanConverter.integerToRoman(189);
+        assertEquals("CLXXXIX", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanM() {
+        String result = romanConverter.integerToRoman(1000);
+        assertEquals("M", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanAdditionM() {
+        String result = romanConverter.integerToRoman(1588);
+        assertEquals("MDLXXXVIII", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanAddition3M() {
+        String result = romanConverter.integerToRoman(3444);
+        assertEquals("MMMCDXLIV", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanAddition2M() {
+        String result = romanConverter.integerToRoman(2499);
+        assertEquals("MMCDXCIX", result);
+    }
+
+    @Test
+    public void testRomanToIntegerUpperBoundary3999() {
+        int result = romanConverter.romanToInteger("MMMCMXCIX");
+        assertEquals(3999, result);
+    }
+
+    @Test
+    public void testRomanToIntegerRejectsEmptyString() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.romanToInteger(""));
+    }
+
+    @Test
+    public void testRomanToIntegerRejectsLowercaseInput() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.romanToInteger("xiv"));
+    }
+
+    @Test
+    public void testRomanToIntegerRejectsIllegalRepetition() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.romanToInteger("IIII"));
+    }
+
+    @Test
+    public void testRomanToIntegerRejectsValueAbove3999() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.romanToInteger("MMMM"));
+    }
+
+    @Test
+    public void testIntegerToRomanUpperBoundary3999() {
+        String result = romanConverter.integerToRoman(3999);
+        assertEquals("MMMCMXCIX", result);
+    }
+
+    @Test
+    public void testIntegerToRomanRejectsZero() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.integerToRoman(0));
+    }
+
+    @Test
+    public void testIntegerToRomanRejectsNegativeValue() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.integerToRoman(-1));
+    }
+
+    @Test
+    public void testIntegerToRomanRejectsValueAbove3999() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.integerToRoman(4000));
+    }
+
+    @Test
+    public void testIntegerToRomanRejectsLargeValueAbove3999() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.integerToRoman(5000));
     }
 }
