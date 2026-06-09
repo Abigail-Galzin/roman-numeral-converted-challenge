@@ -1,13 +1,12 @@
 package com.example;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class RomanConverter {
     Map<Character, Integer> romanMap;
+    int[] numericValues;
+    String[] romanSymbols;
 
     public RomanConverter() {
         this.romanMap = new HashMap<>();
@@ -18,6 +17,8 @@ public class RomanConverter {
         romanMap.put('C', 100);
         romanMap.put('D', 500);
         romanMap.put('M', 1000);
+        this.numericValues = new int[]{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        this.romanSymbols = new String[]{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
     }
 
     public int romanToInteger(String value) {
@@ -42,14 +43,12 @@ public class RomanConverter {
 
     public String integerToRoman(int value) {
         String integerToRoman = "";
-        int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-        String[] symbols = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
         int index = 0;
 
         while(value > 0) {
-            if (value >= values[index]) {
-                integerToRoman += symbols[index];
-                value -= values[index];
+            if (value >= this.numericValues[index]) {
+                integerToRoman += this.romanSymbols[index];
+                value -= this.numericValues[index];
             } else {
                 index++;
             }

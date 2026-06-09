@@ -233,4 +233,16 @@ public class RomanConverterTest {
         String result = romanConverter.integerToRoman(1588);
         assertEquals("MDLXXXVIII", result);
     }
+
+    @Test
+    public void testConverterIntegerToRomanAddition3M() {
+        String result = romanConverter.integerToRoman(3444);
+        assertEquals("MMMCDXLIV", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanAddition2M() {
+        String result = romanConverter.integerToRoman(2499);
+        assertEquals("MMCDXCIX", result);
+    }
 }
