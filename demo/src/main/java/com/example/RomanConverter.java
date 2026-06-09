@@ -31,10 +31,16 @@ public class RomanConverter {
         int repeatLimit = REPEAT_LIMIT;
         for (int i = 0; i < value.length(); i++) {
             char currentLetter = value.charAt(i);
+            if (!romanMap.containsKey(currentLetter)) {
+                throw new IllegalArgumentException("Invalid Roman value: " + value);
+            }
             int currentValue = romanMap.get(currentLetter);
 
             if (i + 1 < value.length()) {
                 char nextLetter = value.charAt(i + 1);
+                if (!romanMap.containsKey(nextLetter)) {
+                    throw new IllegalArgumentException("Invalid Roman value: " + value);
+                }
                 int nextValue = romanMap.get(nextLetter);
 
                 if (currentValue < nextValue) {

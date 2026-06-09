@@ -39,12 +39,23 @@ demo/
     │       └── com
     │           └── example
     │               └── RomanConverter.java
+        │           └── MainRomanConverter.java
     └── test
         └── java
             └── com
                 └── example
                     └── RomanConverterTest.java
 ```
+
+
+## How to Run the Code Roman Converter
+
+From the `demo/src/main/java/com/example` directory, run the code with:
+
+```bash
+java MainRomanConverter.java
+```
+This command executes the console runner code Roman Converter.
 
 ## How to Run the Tests and View the JaCoCo Report
 
