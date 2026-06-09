@@ -255,6 +255,11 @@ public class RomanConverterTest {
     }
 
     @Test
+    public void testRomanToIntegerInvalidValue() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.romanToInteger("ABC"));
+    }
+
+    @Test
     public void testRomanToIntegerRejectsEmptyString() {
         assertThrows(IllegalArgumentException.class, () -> romanConverter.romanToInteger(""));
     }
