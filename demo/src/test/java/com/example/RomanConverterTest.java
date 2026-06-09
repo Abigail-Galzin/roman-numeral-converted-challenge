@@ -197,4 +197,40 @@ public class RomanConverterTest {
         String result = romanConverter.integerToRoman(13);
         assertEquals("XIII", result);
     }
+
+    @Test
+    public void testConverterIntegerToRomanL() {
+        String result = romanConverter.integerToRoman(50);
+        assertEquals("L", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanAdditionL() {
+        String result = romanConverter.integerToRoman(58);
+        assertEquals("LVIII", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanC() {
+        String result = romanConverter.integerToRoman(100);
+        assertEquals("C", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanAdditionC() {
+        String result = romanConverter.integerToRoman(189);
+        assertEquals("CLXXXIX", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanM() {
+        String result = romanConverter.integerToRoman(1000);
+        assertEquals("M", result);
+    }
+
+    @Test
+    public void testConverterIntegerToRomanAdditionM() {
+        String result = romanConverter.integerToRoman(1588);
+        assertEquals("MDLXXXVIII", result);
+    }
 }
