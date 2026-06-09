@@ -1,12 +1,14 @@
 package com.example;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class RomanConverterTest {
     private RomanConverter romanConverter;
+
     @BeforeEach
     public void setUp() {
         this.romanConverter = new RomanConverter();
@@ -244,5 +246,57 @@ public class RomanConverterTest {
     public void testConverterIntegerToRomanAddition2M() {
         String result = romanConverter.integerToRoman(2499);
         assertEquals("MMCDXCIX", result);
+    }
+
+    @Test
+    public void testRomanToIntegerUpperBoundary3999() {
+        int result = romanConverter.romanToInteger("MMMCMXCIX");
+        assertEquals(3999, result);
+    }
+
+    @Test
+    public void testRomanToIntegerRejectsEmptyString() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.romanToInteger(""));
+    }
+
+    @Test
+    public void testRomanToIntegerRejectsLowercaseInput() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.romanToInteger("xiv"));
+    }
+
+    @Test
+    public void testRomanToIntegerRejectsIllegalRepetition() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.romanToInteger("IIII"));
+    }
+
+    @Test
+    public void testRomanToIntegerRejectsValueAbove3999() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.romanToInteger("MMMM"));
+    }
+
+    @Test
+    public void testIntegerToRomanUpperBoundary3999() {
+        String result = romanConverter.integerToRoman(3999);
+        assertEquals("MMMCMXCIX", result);
+    }
+
+    @Test
+    public void testIntegerToRomanRejectsZero() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.integerToRoman(0));
+    }
+
+    @Test
+    public void testIntegerToRomanRejectsNegativeValue() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.integerToRoman(-1));
+    }
+
+    @Test
+    public void testIntegerToRomanRejectsValueAbove3999() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.integerToRoman(4000));
+    }
+
+    @Test
+    public void testIntegerToRomanRejectsLargeValueAbove3999() {
+        assertThrows(IllegalArgumentException.class, () -> romanConverter.integerToRoman(5000));
     }
 }
